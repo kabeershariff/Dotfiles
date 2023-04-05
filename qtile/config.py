@@ -45,7 +45,7 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "d", lazy.spawn('dmenu_run -nb "#000000" -nf "#ff3e3b" -sb "#ff3e3b" -sf "#000000"'), desc="Spawn dmenu"),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -75,7 +75,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2),
+    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2, border_on_single=True),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -103,7 +103,7 @@ screens = [
             [
                 widget.GroupBox(),
                 #widget.CurrentLayout(),
-                widget.Prompt(),
+                #widget.Prompt(),
                 #widget.WindowName(),
                 widget.Chord(
                     chords_colors={
