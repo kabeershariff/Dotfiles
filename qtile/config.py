@@ -41,14 +41,25 @@ keys = [
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
+    Key([mod],"f", lazy.window.toggle_fullscreen()),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "d", lazy.spawn('dmenu_run -nb "#000000" -nf "#ff3e3b" -sb "#ff3e3b" -sf "#000000"'), desc="Spawn dmenu"),
+    Key([mod], "d", lazy.spawn('dmenu_run -nb "#000000" -nf "#48fc35" -sb "#fc35d7" -sf "#000000"'), desc="Spawn dmenu"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [
+        Group('1', label='I'),
+        Group('2', label='II'),
+        Group('3', label='III'),
+        Group('4', label='IV'),
+        Group('5', label='V'),
+        Group('6', label='VI'),
+        Group('7', label='VII'),
+        Group('8', label='VIII'),
+        Group('9', label='IX'),
+        ]
 
 for i in groups:
     keys.extend(
@@ -75,7 +86,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2, border_on_single=True),
+    layout.Columns(border_focus="#fc35d7", border_width=2, border_on_single=True, border_normal='#00330e'),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -101,7 +112,7 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.GroupBox(),
+                widget.GroupBox(highlight_method='text', this_current_screen_border='#fc35d7', active='#48fc35', inactive='#1e1e1e'),
                 #widget.CurrentLayout(),
                 #widget.Prompt(),
                 #widget.WindowName(),
@@ -113,14 +124,14 @@ screens = [
                 ),
                 widget.Spacer(bar.STRETCH),
                 #widget.TextBox("default config", name="default"),
-                widget.TextBox("The Dark Lord", foreground="#ff3e3b"),
+                widget.TextBox("SLAY TRANSCEND CONQUER", foreground="#fc35d7"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Spacer(bar.STRETCH),
                 widget.Systray(),
-                widget.PulseVolume(limit_max_volume=True),
+                widget.PulseVolume(limit_max_volume=True, foreground='#48fc35'),
                 widget.Spacer(length=10),
-                widget.Clock(format="%a  %H:%M "),
+                widget.Clock(format="%H:%M ", foreground='#fc35d7'),
                 #widget.QuickExit(),
             ],
             24,
