@@ -46,19 +46,19 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "d", lazy.spawn('dmenu_run -nb "#000000" -nf "#48fc35" -sb "#fc35d7" -sf "#000000"'), desc="Spawn dmenu"),
+    Key([mod], "d", lazy.spawn('dmenu_run -fn "Cantarell Mono-10" -nb "#000000" -nf "#48fc35" -sb "#fc35d7" -sf "#000000"'), desc="Spawn dmenu"),
 ]
 
 groups = [
-        Group('1', label='I'),
-        Group('2', label='II'),
-        Group('3', label='III'),
-        Group('4', label='IV'),
-        Group('5', label='V'),
-        Group('6', label='VI'),
-        Group('7', label='VII'),
-        Group('8', label='VIII'),
-        Group('9', label='IX'),
+        Group('1', label='⼀'),
+        Group('2', label='二'),
+        Group('3', label='三'),
+        Group('4', label='四'),
+        Group('5', label='五'),
+        Group('6', label='六'),
+        Group('7', label='七'),
+        Group('8', label='八'),
+        Group('9', label='九'),
         ]
 
 for i in groups:
@@ -102,8 +102,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
-    fontsize=12,
+    font="Cantarell",
+    fontsize=13,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -112,7 +112,7 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.GroupBox(highlight_method='text', this_current_screen_border='#fc35d7', active='#48fc35', inactive='#1e1e1e'),
+                widget.GroupBox(disable_drag = True, fontsize=12, highlight_method='text', this_current_screen_border='#fc35d7', active='#48fc35', inactive='#1e1e1e'),
                 #widget.CurrentLayout(),
                 #widget.Prompt(),
                 #widget.WindowName(),
@@ -124,7 +124,7 @@ screens = [
                 ),
                 widget.Spacer(bar.STRETCH),
                 #widget.TextBox("default config", name="default"),
-                widget.TextBox("SLAY TRANSCEND CONQUER", foreground="#fc35d7"),
+                widget.TextBox("D3M0NICR4GE", foreground="#48fc35", font='Darkmode', fontsize=30),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Spacer(bar.STRETCH),
